@@ -53,6 +53,12 @@
         <updatePolicy>daily</updatePolicy>
       </releases>
     </repository>
+    <repository>
+	<id>gemfire-repository</id>
+	<name>Gemfire Repository</name>
+	<url>http://dist.gemstone.com/maven/release</url>
+</repository>
+
   </repositories>
 
   <build>
@@ -623,5 +629,10 @@
       <artifactId>super-csv-joda</artifactId>
       <version>2.3.1</version>
     </dependency>
+     <dependency>
+      <groupId>com.gemstone.gemfire</groupId>
+      <artifactId>gemfire</artifactId>
+      <version>8.2.0</version>
+   </dependency>
   </dependencies>
 </project>
