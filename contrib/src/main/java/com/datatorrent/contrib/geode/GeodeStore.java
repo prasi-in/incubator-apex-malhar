@@ -182,12 +182,12 @@ public class GeodeStore implements KeyValueStore, Serializable
     region = clientCache.getRegion(getRegionName());
 
     if (region == null) {
-      region = clientCache.<Object, Object> createClientRegionFactory(ClientRegionShortcut.PROXY)
-          .create(getRegionName());
+      region = clientCache.<Object, Object> createClientRegionFactory(ClientRegionShortcut.PROXY).create(
+          getRegionName());
     }
 
   }
- 
+
   @Override
   public void disconnect() throws IOException
   {
@@ -210,17 +210,16 @@ public class GeodeStore implements KeyValueStore, Serializable
    * @return The value.
    */
   @Override
-  public Object get(Object key) 
+  public Object get(Object key)
   {
-    
-    
+
     try {
-    	return (getRegion().get(key));
-      } catch (IOException ex) {
-        LOG.info("error getting object ", ex);
-        return null;
-      }
-         
+      return (getRegion().get(key));
+    } catch (IOException ex) {
+      LOG.info("error getting object ", ex);
+      return null;
+    }
+
   }
 
   /**
@@ -234,37 +233,32 @@ public class GeodeStore implements KeyValueStore, Serializable
   @Override
   public List<Object> getAll(List<Object> keys)
   {
-	  
-	  List<Object> values = new ArrayList<Object>();
-	
-	  try {
-		  final Map<Object, Object> entries = getRegion().getAll(keys);
-		  for (int i = 0; i < keys.size(); i++) {
-		      values.add(entries.get(keys.get(i)));
-		    }
-	      } catch (IOException ex) {
-	        LOG.info("error getting region ", ex);
-	      }
-    	  
-    
-    
-    
+
+    List<Object> values = new ArrayList<Object>();
+
+    try {
+      final Map<Object, Object> entries = getRegion().getAll(keys);
+      for (int i = 0; i < keys.size(); i++) {
+        values.add(entries.get(keys.get(i)));
+      }
+    } catch (IOException ex) {
+      LOG.info("error getting region ", ex);
+    }
+
     return (values);
 
   }
 
   public Map<Object, Object> getallMap(List<Object> keys)
   {
-	  
-	  try {
-		  final Map<Object, Object> entries = getRegion().getAll(keys);
-		    return (entries);
-	      } catch (IOException ex) {
-	        LOG.info("error getting object ", ex);
-	        return null ;
-	      } 
-	  
-    
+
+    try {
+      final Map<Object, Object> entries = getRegion().getAll(keys);
+      return (entries);
+    } catch (IOException ex) {
+      LOG.info("error getting object ", ex);
+      return null;
+    }
 
   }
 
@@ -273,8 +267,8 @@ public class GeodeStore implements KeyValueStore, Serializable
   {
     try {
       return (getRegion().query(predicate));
-    } catch (FunctionDomainException | TypeMismatchException | NameResolutionException
-        | QueryInvocationTargetException | IOException e) {
+    } catch (FunctionDomainException | TypeMismatchException | NameResolutionException | QueryInvocationTargetException
+        | IOException e) {
       e.printStackTrace();
       return null;
     }

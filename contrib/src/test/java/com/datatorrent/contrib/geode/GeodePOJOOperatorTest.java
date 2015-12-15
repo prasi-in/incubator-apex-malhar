@@ -22,10 +22,10 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import com.datatorrent.lib.util.TableInfo;
-import com.datatorrent.netlet.util.DTThrowable;
 import com.datatorrent.contrib.util.TestPOJO;
 import com.datatorrent.contrib.util.TupleGenerator;
+import com.datatorrent.lib.util.TableInfo;
+import com.datatorrent.netlet.util.DTThrowable;
 
 @SuppressWarnings("rawtypes")
 public class GeodePOJOOperatorTest
@@ -80,12 +80,12 @@ public class GeodePOJOOperatorTest
     }
 
     generator.reset();
-    
+
     for (int i = 0; i < TUPLE_SIZE; ++i) {
       operator.processTuple(generator.getNextTuple());
     }
 
-//    readDataAndVerify(operator.getStore(), generator);
+    //    readDataAndVerify(operator.getStore(), generator);
   }
 
   public void readDataAndVerify(GeodeStore store, TupleGenerator<TestPOJO> generator)

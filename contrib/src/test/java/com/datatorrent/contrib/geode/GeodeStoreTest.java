@@ -31,14 +31,11 @@ import org.junit.Test;
 
 import com.gemstone.gemfire.cache.query.SelectResults;
 
-
-import com.datatorrent.contrib.geode.GeodeStore;
-
 public class GeodeStoreTest
 {
 
   private GeodeStore geodeStore;
-  
+
   @Before
   public void setup() throws IOException
   {
@@ -51,13 +48,13 @@ public class GeodeStoreTest
     geodeStore.setRegionName("operator");
     geodeStore.connect();
   }
-  
+
   @After
   public void tearDown() throws IOException
   {
     geodeStore.disconnect();
   }
-  
+
   @Test
   public void testputAllandget() throws Exception
   {

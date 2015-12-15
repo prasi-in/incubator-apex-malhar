@@ -20,6 +20,7 @@ package com.datatorrent.contrib.geode;
 
 import org.junit.Before;
 import org.junit.Test;
+
 import com.datatorrent.lib.db.KeyValueStoreOperatorTest;
 
 public class GeodeOperatorTest
@@ -28,7 +29,7 @@ public class GeodeOperatorTest
 
   private GeodeStore geodeStore;
   private GeodeStore testStore;
- 
+
   @Before
   public void setup()
   {
@@ -51,7 +52,7 @@ public class GeodeOperatorTest
     testFramework = new KeyValueStoreOperatorTest<GeodeStore>(geodeStore, testStore);
 
   }
-  
+
   @Test
   public void testOutputOperator() throws Exception
   {
