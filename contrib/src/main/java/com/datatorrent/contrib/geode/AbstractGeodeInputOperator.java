@@ -36,4 +36,8 @@ import com.datatorrent.lib.db.AbstractKeyValueStoreInputOperator;
  */
 public abstract class AbstractGeodeInputOperator<T> extends AbstractKeyValueStoreInputOperator<T, GeodeStore>
 {
+  public AbstractGeodeInputOperator()
+  {
+    store = new GeodeStore();
+  }
 }

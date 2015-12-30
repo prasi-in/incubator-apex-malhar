@@ -147,7 +147,7 @@ public class GeodeStore implements KeyValueStore, Serializable
   public Region<Object, Object> getRegion() throws IOException
   {
     // return region;
-    if (clientCache == null && clientCache.isClosed()) {
+    if (clientCache == null || clientCache.isClosed()) {
       initClient();
     }
 
@@ -175,8 +175,8 @@ public class GeodeStore implements KeyValueStore, Serializable
   {
     try {
       clientCache = new ClientCacheFactory().addPoolLocator(getLocatorHost(), getLocatorPort()).create();
-    } catch (CacheClosedException ex) {
-      LOG.info("error initiating client ", ex);
+    } catch (Exception ex) {
+      throw new RuntimeException(ex);
     }
 
     region = clientCache.getRegion(getRegionName());
